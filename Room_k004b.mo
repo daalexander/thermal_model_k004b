@@ -54,7 +54,6 @@ model Room_k004b "model of a room for mpc purpose with JModelica.org"
   RadiantEnergyFluenceRate inlet_sun
     annotation (Placement(transformation(extent={{350,172},{370,192}})));
   Radiator radiator "instance of a radiator";
-    annotation (Placement(transformation(extent={{-238,-180},{280,200}})));
   Massflow radiator_inlet_massflow
     annotation (Placement(transformation(extent={{-350,-28},{-330,-8}})));
   Temperature radiator_inlet_temperature
@@ -135,4 +134,5 @@ equation
           extent={{168,292},{348,214}},
           lineColor={0,0,255},
           textString="inlet_other.qdot")}));
+    annotation (Placement(transformation(extent={{-238,-180},{280,200}})));
 end Room_k004b;

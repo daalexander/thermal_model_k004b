@@ -55,10 +55,10 @@ equation
       smooth=Smooth.None));
   connect(heater.massflow, room_k004b.radiator_inlet_massflow) annotation (Line(
       points={{38.9,-24.5},{54,-24.5},{54,-40},{-86,-40},{-86,40.2},{-66,40.2}},
-
       color={0,0,0},
       pattern=LinePattern.None,
       smooth=Smooth.None));
+
   connect(heater.temperature, room_k004b.radiator_inlet_temperature)
     annotation (Line(
       points={{38.9,-15.7},{60,-15.7},{60,-48},{-92,-48},{-92,48},{-66,48}},
