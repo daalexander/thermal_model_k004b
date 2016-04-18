@@ -9,10 +9,10 @@ model Radiator "model for a discretized radiator within a room"
   parameter Integer cv_number = 10
     "number of control volumes in which the radiator is discretized";
 
-  parameter Modelica.SIunits.Conversions.NonSIunits.Temperature_degC cv_temperature_init_inlet=55.0
+  parameter Modelica.SIunits.Conversions.NonSIunits.Temperature_degC cv_temperature_init_inlet=24.6
     "initialization of the income temperature of the fluid in the radiator";
 
-  parameter Modelica.SIunits.Conversions.NonSIunits.Temperature_degC cv_temperature_init_outlet=35.0
+  parameter Modelica.SIunits.Conversions.NonSIunits.Temperature_degC cv_temperature_init_outlet=22.5
     "initialization of the outcome temperature of the fluid in the radiator";
 
   parameter Modelica.SIunits.Length radiator_element_length=0.045

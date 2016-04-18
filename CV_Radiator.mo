@@ -12,7 +12,7 @@ model CV_Radiator "control volume for a discretized radiator"
   outer Modelica.SIunits.Area exchange_surface
     "surface of one control volume at which heat transfer takes place";
   /* calculated parameter*/
-  Modelica.SIunits.Energy cv_u "inner energy of the control volume";
+  //Modelica.SIunits.Energy cv_u "inner energy of the control volume";
   Modelica.SIunits.HeatFlowRate cv_qdot
     "heatflowrate over the borders of the control volume";
   Modelica.SIunits.Conversions.NonSIunits.Temperature_degC cv_temperature_out(start=cv_temperature_init, fixed=true)
@@ -32,9 +32,9 @@ model CV_Radiator "control volume for a discretized radiator"
         iconTransformation(extent={{408,-8},{428,12}})));
 equation
   /* calculate inner energy */
-  cv_u = cv_m * cp_water * cv_temperature_out;
+  //cv_u = cv_m * cp_water * cv_temperature_out;
   /* calculate derival of the inner energy */
-  der(cv_u) = mdot * cp_water * (cv_temperature_in - cv_temperature_out) - cv_qdot;
+   cv_m * cp_water * der(cv_temperature_out) = mdot * cp_water * (cv_temperature_in - cv_temperature_out) - cv_qdot;
   /* calculate heatflowrate */
   cv_qdot = u_radiator * exchange_surface * (cv_temperature_out - room_temperature_cv);
   /* commit calculated temperature */

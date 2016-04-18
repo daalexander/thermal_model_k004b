@@ -9,9 +9,9 @@ model Room_k004b "model of a room for mpc purpose with JModelica.org"
     parameter Modelica.SIunits.Height window_height=2.08 "height of the window";
     parameter Modelica.SIunits.Density rho_air = 1.2 "density of air";
     parameter Modelica.SIunits.CoefficientOfHeatTransfer u_glass=2.0
-    "heat transfer coefficient for glass ";                                        //Aus Thesis Ander, Genauere Bestimmung folgt mit original Werten
+    "heat transfer coefficient for glass ";
     parameter Modelica.SIunits.CoefficientOfHeatTransfer u_wall=0.612986
-    "heat transfer coefficient for the walls of the room";                         //Aus Thesis Ander, Genauere Bestimmung folgt mit original Werten
+    "heat transfer coefficient for the walls of the room";
     parameter Modelica.SIunits.SpecificHeatCapacity cp_air=1005
     "specific heat capacity of air";
     parameter Modelica.SIunits.SpecificHeatCapacity cp_water=4182
@@ -24,7 +24,7 @@ model Room_k004b "model of a room for mpc purpose with JModelica.org"
     "sum of contacting surfaces (walls) with the environment";
     inner Modelica.SIunits.Area window_surface
     "sum of contacting surfaces (windows) with the environment";
-    Modelica.SIunits.Energy room_u "inner energy of the system room";
+    //Modelica.SIunits.Energy room_u "inner energy of the system room";
     Modelica.SIunits.HeatFlowRate environment_qdot
     "rate of heat flow with the environment";
     Modelica.SIunits.HeatFlowRate environment_qdot_wall
@@ -36,7 +36,7 @@ model Room_k004b "model of a room for mpc purpose with JModelica.org"
     Modelica.SIunits.HeatFlowRate radiator_qdot
     "heat flow rate at the radiator surfaces streaming into the room";
     /** states x **/
-    inner Modelica.SIunits.Conversions.NonSIunits.Temperature_degC room_temperature(start=24, fixed=true)
+    inner Modelica.SIunits.Conversions.NonSIunits.Temperature_degC room_temperature(start=21.1, fixed=true)
     "temperature within the room (Initially about 24 degree celsius)";
     /** controls u **/
     Modelica.SIunits.MassFlowRate mdot=radiator_inlet_massflow.mdot
@@ -68,9 +68,9 @@ equation
  /* calculate window surface of the room with the environment */
  window_surface=(window_length*window_height);
  /* calculate inner energy*/
- room_u = room_mass * cp_air * room_temperature; //Überprüfen ob überhaupt nötig?!?!?!
+ //room_u = room_mass * cp_air * room_temperature; //Überprüfen ob überhaupt nötig?!?!?!
  /* calculate derival of the inner energy */
- der(room_u) = radiator_qdot + qdot_loss + qdot_sun + qdot_otherfactors;
+ room_mass * cp_air * der(room_temperature) = radiator_qdot + qdot_loss + qdot_sun + qdot_otherfactors;
  /* sum up the lost heat flow */
  qdot_loss = environment_qdot;
  /* sum up the lost heatflow with the environment */
